@@ -36,9 +36,8 @@ public class CarController {
 	}
 
 	@RequestMapping
-	public String getAvailableCars(Model model, HttpServletRequest request) {
+	public String getAvailableCars(Model model) {
 		model.addAttribute("cars", carService.getAvailableCars());
-		model.addAttribute("realPath", request.getSession().getServletContext().getRealPath("/"));
 		return "cars";
 	}
 
