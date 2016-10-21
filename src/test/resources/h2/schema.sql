@@ -24,13 +24,12 @@ CREATE TABLE CUSTOMERS
     email          VARCHAR (50) NOT NULL ,
     password       VARCHAR (70) NOT NULL
   ) ;
---
---
---CREATE TABLE TRANSACTIONS
---  (
---    Transaction_Id NUMBER (7) NOT NULL ,
---    Start_Date     DATE NOT NULL ,
---    End_Date       DATE NOT NULL ,
---    Car_Id         NUMBER (7) NOT NULL ,
---    Customer_Id    NUMBER (7) NOT NULL
---  );
+
+CREATE TABLE TRANSACTIONS
+  (
+    Transaction_Id INTEGER PRIMARY KEY ,
+    Start_Date     DATE NOT NULL ,
+    End_Date       DATE NOT NULL ,
+    Car_Id         INTEGER  ,
+    Customer_Id    INTEGER
+  );
