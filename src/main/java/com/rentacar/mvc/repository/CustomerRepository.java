@@ -11,8 +11,6 @@ public interface CustomerRepository {
 
 	Customer getCustomerByEmail(String email);
 	
-//	Customer getCustomerCompanyByEmail(String email);
-	
 	List <Customer> getAllCustomers();
 
 	int count();
