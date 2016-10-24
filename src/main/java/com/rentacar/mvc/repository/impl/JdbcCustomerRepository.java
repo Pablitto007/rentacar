@@ -34,11 +34,6 @@ public class JdbcCustomerRepository implements CustomerRepository {
 			+  " CUSTOMER_TYPE, EMAIL, PASSWORD) VALUES (?,?,?,?,?,?,?,?,?)";
 	
 	
-//	private static final String SELECT_SQL = "SELECT CUSTOMER_ID, STREET_ADDRESS,"
-//			+ "CITY, POSTAL_CODE, COMPANY_NAME,"
-//			+ "TAX_ID, PERSON_NAME,"
-//			+ "PERSON_SURNAME, ID_CARD, CUSTOMER_TYPE, EMAIL, PASSWORD FROM CUSTOMERS WHERE EMAIL = ?";
-	
 	private static final String SELECT_SQL = "SELECT * FROM CUSTOMERS WHERE EMAIL = ?";
 	
 	
