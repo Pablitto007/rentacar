@@ -63,6 +63,50 @@ public class Customer {
 		this.email = email;
 		this.password = password;
 	}
+	
+	/**
+	 *Email is unique in database
+	 * 
+	 */
+
+	@Override
+	public int hashCode() {
+		
+		int hash = 31;
+		hash += 109 + (email != null ? email.toLowerCase().trim().hashCode() : 0);
+		hash += 109 + (streetAddress != null ? streetAddress.toLowerCase().trim().hashCode() : 0);
+		hash += 109 + (city != null ? city.toLowerCase().trim().hashCode() : 0);
+		return hash;
+	}
+	
+	@Override
+	public boolean equals(Object otherObject) {
+		if (this == otherObject)
+			return true;
+		if (otherObject == null || !(otherObject instanceof Customer))
+			return false;
+
+		Customer customer = (Customer) otherObject;
+		return ((this.email != null && customer.email != null) ? this.email.toLowerCase().trim().equals(customer.email.toLowerCase().trim()) :false)
+				&& ((this.streetAddress != null && customer.streetAddress != null) ? this.streetAddress.toLowerCase().trim().equals(customer.streetAddress.toLowerCase().trim()) :false)
+				&& ((this.city != null && customer.city != null) ? this.city.toLowerCase().trim().equals(customer.city.toLowerCase().trim()) :false);
+	}
+	
+	@Override 
+	public String toString(){
+		if (customerType.equalsIgnoreCase("PERS")) {
+		return "Customer [Name: " + personName + " ,Surname: " + personSurname + 
+				" ,Street Address: " + streetAddress + 
+				", City: " + city + " ,Postal Code: " + postalCode +
+				", ID Card number: " + idCard +  " ,Email: "+  email  + "]";
+		}else{
+			return "Customer [Company Name: " + companyName + 
+					" ,Street Address: " + streetAddress + 
+					", City: " + city + " ,Postal Code: " + postalCode +
+					", Tax ID number: " + taxId + " ,Email: "+  email + "]";
+		}
+	}
+}
 
 
 	public Integer getCustomerId() {
@@ -159,48 +203,5 @@ public class Customer {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	/**
-	 *Email is unique in database
-	 * 
-	 */
-
-	@Override
-	public int hashCode() {
-		
-		int hash = 31;
-		hash += 109 + (email != null ? email.toLowerCase().trim().hashCode() : 0);
-		hash += 109 + (streetAddress != null ? streetAddress.toLowerCase().trim().hashCode() : 0);
-		hash += 109 + (city != null ? city.toLowerCase().trim().hashCode() : 0);
-		return hash;
-	}
-	
-	@Override
-	public boolean equals(Object otherObject) {
-		if (this == otherObject)
-			return true;
-		if (otherObject == null || !(otherObject instanceof Customer))
-			return false;
-
-		Customer customer = (Customer) otherObject;
-		return ((this.email != null && customer.email != null) ? this.email.toLowerCase().trim().equals(customer.email.toLowerCase().trim()) :false)
-				&& ((this.streetAddress != null && customer.streetAddress != null) ? this.streetAddress.toLowerCase().trim().equals(customer.streetAddress.toLowerCase().trim()) :false)
-				&& ((this.city != null && customer.city != null) ? this.city.toLowerCase().trim().equals(customer.city.toLowerCase().trim()) :false);
-	}
-	
-	@Override 
-	public String toString(){
-		if (customerType.equalsIgnoreCase("PERS")) {
-		return "Customer [Name: " + personName + " ,Surname: " + personSurname + 
-				" ,Street Address: " + streetAddress + 
-				", City: " + city + " ,Postal Code: " + postalCode +
-				", ID Card number: " + idCard +  " ,Email: "+  email  + "]";
-		}else{
-			return "Customer [Company Name: " + companyName + 
-					" ,Street Address: " + streetAddress + 
-					", City: " + city + " ,Postal Code: " + postalCode +
-					", Tax ID number: " + taxId + " ,Email: "+  email + "]";
-		}
 	}
 }
