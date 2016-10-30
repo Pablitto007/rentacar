@@ -30,7 +30,9 @@
 					<form:errors path="*" cssClass="alert alert-danger" element ="div"/>
 				
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="email">E-mail</label>
+					<label class="control-label col-lg-2" for="email">E-
+					<spring:message code="registration.form.email.label"/>
+					</label>
 					<div class="col-lg-8">
 						<form:input id="email" path="email" type="text"
 							class="form-control"/>
@@ -43,6 +45,7 @@
 					<div class="col-lg-8">
 						<form:input id="password" path="password" type="password"
 							class="form-control"/>
+							<form:errors path="password" cssClass="text-danger" />
 					</div>
 				</div>
 				
@@ -67,14 +70,16 @@
 					<div class="col-lg-8">
 						<form:input id="streetAddress" path="streetAddress" type="text"
 							class="form-control"/>
+							<form:errors path="streetAddress" cssClass="text-danger" />
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="postalCode">Postal Code</label>
 					<div class="col-lg-8">
-						<form:input id="postalCode" path="postalCode" type="text"
+						<form:input id="postalCode" path="postalCode" placeholder="00-000" type="text"
 							class="form-control"/>
+							<form:errors path="postalCode" cssClass="text-danger" />
 					</div>
 				</div>
 				
@@ -83,6 +88,7 @@
 					<div class="col-lg-8">
 						<form:input id="city" path="city" type="text"
 							class="form-control"/>
+							<form:errors path="city" cssClass="text-danger" />
 					</div>
 				</div>
 				
