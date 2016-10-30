@@ -1,6 +1,8 @@
 package com.rentacar.mvc.doamin;
 
-import java.util.Objects;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 
 
 /**
@@ -14,16 +16,30 @@ import java.util.Objects;
 public class Customer {
 
 	private Integer customerId;
+	
+
+	@Size(min=1, max=40, message = "{Size.validation}") 
 	private String streetAddress;
+	
+	@Size(min=1, max=25, message = "{Size.validation}") 
 	private String city;
+	
+	//postal code has to be in 00-000 format
+	@Pattern(regexp = "\\d{2}-\\d{3}", message ="{PostalCode.validation}")
 	private String postalCode;
+	
 	private String companyName;
 	private String taxId;
 	private String personName;
 	private String personSurname;
 	private String idCard;
 	private String customerType;
+	
+	@Email(message = "{Email.validation}")
 	private String email;
+	
+	//password has to contain at least one digit and must not contain any of !@#*^... char
+	@Pattern(regexp = "\\w*[\\d]+\\w*", message ="{Password.validation}")
 	private String password;
 	
 	
@@ -144,21 +160,22 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@Override
-	public int hashCode() {
-		if (customerType.equalsIgnoreCase("PERS")) {
-			return Objects.hash(customerId, idCard, email);
-		} else {
-			return Objects.hash(customerId, taxId, email);
-		}
-	}
 	
 	/**
-	 * customerId, taxId and idCard are unique identifiers so it is sufficient to compare these fields only
+	 *Email is unique in database
 	 * 
 	 */
 
+	@Override
+	public int hashCode() {
+		
+		int hash = 31;
+		hash += 109 + (email != null ? email.toLowerCase().trim().hashCode() : 0);
+		hash += 109 + (streetAddress != null ? streetAddress.toLowerCase().trim().hashCode() : 0);
+		hash += 109 + (city != null ? city.toLowerCase().trim().hashCode() : 0);
+		return hash;
+	}
+	
 	@Override
 	public boolean equals(Object otherObject) {
 		if (this == otherObject)
@@ -167,14 +184,11 @@ public class Customer {
 			return false;
 
 		Customer customer = (Customer) otherObject;
-		if (customerType.equalsIgnoreCase("PERS")) {
-			return this.customerId == customer.customerId && Objects.equals(this.idCard, customer.idCard)
-					&& Objects.equals(this.email, customer.email);
-		} else {
-			return this.customerId == customer.customerId && Objects.equals(this.taxId, customer.taxId)
-					&& Objects.equals(this.email, customer.email);
-		}
+		return ((this.email != null && customer.email != null) ? this.email.toLowerCase().trim().equals(customer.email.toLowerCase().trim()) :false)
+				&& ((this.streetAddress != null && customer.streetAddress != null) ? this.streetAddress.toLowerCase().trim().equals(customer.streetAddress.toLowerCase().trim()) :false)
+				&& ((this.city != null && customer.city != null) ? this.city.toLowerCase().trim().equals(customer.city.toLowerCase().trim()) :false);
 	}
+	
 	@Override 
 	public String toString(){
 		if (customerType.equalsIgnoreCase("PERS")) {
