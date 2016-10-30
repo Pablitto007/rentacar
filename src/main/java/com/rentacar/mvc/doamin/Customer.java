@@ -106,7 +106,7 @@ public class Customer {
 					", Tax ID number: " + taxId + " ,Email: "+  email + "]";
 		}
 	}
-}
+
 
 
 	public Integer getCustomerId() {
