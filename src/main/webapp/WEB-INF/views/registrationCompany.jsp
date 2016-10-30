@@ -43,6 +43,7 @@
 					<div class="col-lg-8">
 						<form:input id="password" path="password" type="password"
 							class="form-control"/>
+							<form:errors path="password" cssClass="text-danger" />
 					</div>
 				</div>
 				
@@ -67,6 +68,7 @@
 					<div class="col-lg-8">
 						<form:input id="streetAddress" path="streetAddress" type="text"
 							class="form-control"/>
+							<form:errors path="streetAddress" cssClass="text-danger" />
 					</div>
 				</div>
 				
@@ -75,6 +77,7 @@
 					<div class="col-lg-8">
 						<form:input id="postalCode" path="postalCode" type="text"
 							class="form-control"/>
+							<form:errors path="postalCode" cssClass="text-danger" />
 					</div>
 				</div>
 				
@@ -83,6 +86,7 @@
 					<div class="col-lg-8">
 						<form:input id="city" path="city" type="text"
 							class="form-control"/>
+							<form:errors path="city" cssClass="text-danger" />
 					</div>
 				</div>
 				
