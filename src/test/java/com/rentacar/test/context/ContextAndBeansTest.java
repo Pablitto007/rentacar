@@ -1,7 +1,6 @@
 package com.rentacar.test.context;
 
 import static org.junit.Assert.assertNotNull;
-
 import javax.sql.DataSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
