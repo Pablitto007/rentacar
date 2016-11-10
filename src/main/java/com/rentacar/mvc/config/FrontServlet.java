@@ -21,17 +21,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class FrontServlet extends WebMvcConfigurerAdapter{
 	
 	@Bean
-	public Validator validator(){
-		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-		validator.setValidationMessageSource(messageSource());
-		return validator;
-	}
-	
-	@Bean
 	public MessageSource messageSource(){
 		ResourceBundleMessageSource messageSource = 
 				new ResourceBundleMessageSource();
-		messageSource.setBasename("messages_pl");
+		messageSource.setBasename("messages_en");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
@@ -54,6 +47,12 @@ public class FrontServlet extends WebMvcConfigurerAdapter{
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
 	
-
+	@Override
+	public Validator getValidator(){
+		LocalValidatorFactoryBean validatorFactory = new LocalValidatorFactoryBean();
+		validatorFactory.setValidationMessageSource(messageSource());
+		validatorFactory.afterPropertiesSet();
+		return validatorFactory;
+	}
 
 }
