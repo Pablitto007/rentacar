@@ -19,6 +19,11 @@ import com.rentacar.mvc.service.CustomerService;
 import com.rentacar.mvc.service.TransactionService;
 import com.rentacar.mvc.service.impl.AuthenticationService;
 
+/**
+ * @author Paweł Pigłowski (Pablitto077)
+ *
+ */
+
 @Controller
 @RequestMapping("/cars")
 public class CarController {
@@ -53,11 +58,13 @@ public class CarController {
 	@RequestMapping(value = "/car", method = RequestMethod.POST)
 	public String processCarTransaction(@ModelAttribute("newTransaction") Transaction transactionToPersist, Model model,
 			@RequestParam String id, BindingResult result) {
-		String currentUser = AuthenticationService.getLoggedUsername();
+		
 		Car car = carService.getCarById(Integer.parseInt(id));
-
 		transactionToPersist.setCarId(car.getCarId());
+		
+		String currentUser = AuthenticationService.getLoggedUsername();
 		transactionToPersist.setCustomerId(customerService.getIdFromLoggedCustomer(currentUser));
+		
 		try {
 			transactionService.saveTransaction(transactionToPersist);
 		} catch (DataAccessException e) {
