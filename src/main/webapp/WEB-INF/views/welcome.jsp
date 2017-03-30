@@ -57,12 +57,6 @@
 				<a href="<spring:url value="/cars" />">Available Cars</a>
 			</h1>
 		</div>
-		<div class="col-md-8">
-			<h6>${test1}</h6>
-			<h6>${test2}</h6>
-			<h6>${test5}</h6>
-		</div>
-
 	</section>
 </body>
 </html>
