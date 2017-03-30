@@ -1,11 +1,9 @@
 # rentacar
-Rent a car system.
-Web application that simulates simply rent a car company software.
-App is able to store data on cars, customers and rental transactions. 
-You can do some CRUD opertions on stored data. JDBC Template from Spring was my choose to work with Oracle DBMS.
-Another functionality is authentication and authorization based on Spring Security.
+Rent a car system. Web application that simulates simply rent a car company software. App stores data of cars, customers and rental transactions. You can perform few common CRUD opertions on stored data. 
+Spring JDBC Template is working with Oracle DBMS here. 
+Application also provides authentication and authorization functionalities based on Spring Security.
+Please find out more from quick showcase:
 
-Please note that Customers entity has two subtypes (Persons and Compmanies)  ans this is implemented as a single table in database. 
 
 Used technologies: Java 8, 7, Spring-MVC 4, Spring Security, JSP (JSTL, CSS Bootstrap),
                     SQL, PL/SQL, Spring JDBC Template.
