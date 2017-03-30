@@ -4,7 +4,7 @@ import java.util.Objects;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @author Paweł Ptigłowski (Pablitto077)
+ * @author Paweł Pigłowski (Pablitto077)
  */
 
 public class Car {
