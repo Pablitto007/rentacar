@@ -3,7 +3,10 @@ package com.rentacar.mvc.doamin;
 import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
+/**
+ * @author Paweł Pigłowski (Pablitto077)
+ *
+ */
 public class Transaction {
 
 	private Integer transactionId;
