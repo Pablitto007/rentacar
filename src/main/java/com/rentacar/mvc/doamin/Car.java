@@ -3,6 +3,10 @@ package com.rentacar.mvc.doamin;
 import java.util.Objects;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * @author Paweł Ptigłowski (Pablitto077)
+ */
+
 public class Car {
 
 	private Integer carId;
@@ -27,6 +31,31 @@ public class Car {
 		this.yearOfManufacture = dateOfManufacture;
 		this.pricePerDay = pricePerDay;
 		this.description = description;
+	}
+	
+	/**
+	 * carId & vin are unique identifiers so it is sufficient to compare these two fields only
+	 * 
+	 */
+
+	@Override
+	public int hashCode(){
+		return Objects.hash(carId, vin);
+	}
+	@Override
+	public boolean equals(Object otherObject){
+		if(this == otherObject)
+			return true;
+		if (otherObject == null || !(otherObject instanceof Car))
+			return false;
+		Car car = (Car)otherObject;
+		return this.carId == car.carId && Objects.equals(this.vin, car.vin);
+	}
+	@Override 
+	public String toString(){
+		return "Car [id: " + carId +" ,VIN: " + vin + " ,Brand: " + brand + " ,Model: " + model + 
+				" ,Year of manufacture: " + yearOfManufacture  + " ,Price per Day: " + pricePerDay +
+				", Equipment: " + description + " ]";
 	}
 	
 	//getters and setters
@@ -79,31 +108,5 @@ public class Car {
 
 	public void setCarImage(MultipartFile carImage) {
 		this.carImage = carImage;
-	}
-
-	/**
-	 * carId & vin are unique identifiers so it is sufficient to compare these two fields only
-	 * 
-	 */
-
-	@Override
-	public int hashCode(){
-		return Objects.hash(carId, vin);
-	}
-	@Override
-	public boolean equals(Object otherObject){
-		if(this == otherObject)
-			return true;
-		if (otherObject == null || !(otherObject instanceof Car))
-			return false;
-		Car car = (Car)otherObject;
-		return this.carId == car.carId && Objects.equals(this.vin, car.vin);
-	}
-	@Override 
-	public String toString(){
-		return "Car [id: " + carId +" ,VIN: " + vin + " ,Brand: " + brand + " ,Model: " + model + 
-				" ,Year of manufacture: " + yearOfManufacture  + " ,Price per Day: " + pricePerDay +
-				", Equipment: " + description + " ]";
-	}
-	
+	}	
 }
